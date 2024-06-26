@@ -37,11 +37,11 @@ export class User {
   @Column({ nullable: true, default: null })
   deletedAt?: Date;
 
-  @ManyToMany(() => Role)
-  @JoinTable({ name: 'User_Roles' })
+  @ManyToMany(() => Role, (role) => role.users)
+  @JoinTable()
   roles: Role[];
 
-  @ManyToMany(() => Team)
-  @JoinTable({ name: 'User_Teams' })
+  @ManyToMany(() => Team, (team) => team.users)
+  @JoinTable()
   teams: Team[];
 }

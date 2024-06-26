@@ -12,12 +12,12 @@ export class Screen {
   @ManyToOne(() => Modules)
   modules: Modules;
 
-  @Column()
+  @Column({ nullable: true, default: null })
   createdAt: Date;
 
-  @Column()
+  @Column({ nullable: true, default: null })
   updatedAt: Date;
 
-  @Column()
+  @Column({ nullable: true, default: null })
   deletedAt: Date;
 }

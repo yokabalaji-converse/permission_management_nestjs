@@ -34,12 +34,12 @@ export class Permission {
   @Column({ nullable: true })
   companyId: number;
 
-  @Column()
+  @Column({ nullable: true, default: null })
   createdAt: Date;
 
-  @Column()
+  @Column({ nullable: true, default: null })
   updatedAt: Date;
 
-  @Column()
+  @Column({ nullable: true, default: null })
   deletedAt: Date;
 }

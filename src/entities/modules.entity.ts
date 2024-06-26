@@ -8,12 +8,12 @@ export class Modules {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ nullable: true, default: null })
   createdAt: Date;
 
-  @Column()
+  @Column({ nullable: true, default: null })
   updatedAt: Date;
 
-  @Column()
+  @Column({ nullable: true, default: null })
   deletedAt: Date;
 }

@@ -7,6 +7,7 @@ import {
 } from 'typeorm';
 import { Permission } from './permission.entity';
 import { User } from './user.entity';
+import { Team } from './team.entity';
 
 @Entity()
 export class Role {
@@ -32,4 +33,8 @@ export class Role {
   @ManyToMany(() => User, (user) => user.roles)
   @JoinTable()
   users: User[];
+
+  @ManyToMany(() => Team, (team) => team.roles)
+  @JoinTable()
+  teams: User[];
 }

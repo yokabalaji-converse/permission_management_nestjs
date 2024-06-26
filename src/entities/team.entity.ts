@@ -16,17 +16,17 @@ export class Team {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ nullable: true, default: null })
   createdAt: Date;
 
-  @Column()
+  @Column({ nullable: true, default: null })
   updatedAt: Date;
 
-  @Column()
+  @Column({ nullable: true, default: null })
   deletedAt: Date;
 
-  @ManyToMany(() => Role)
-  @JoinTable({ name: 'Team_Roles' })
+  @ManyToMany(() => Role, (role) => role.teams)
+  @JoinTable()
   roles: Role[];
 
   @ManyToMany(() => User, (user) => user.teams)

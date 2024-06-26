@@ -20,6 +20,7 @@ export class TeamService {
       name: createTeamDto.name,
       users: await this.userRepository.findByIds(createTeamDto.users),
     });
+    console.log(team);
     return this.teamRepository.save(team);
   }
 
