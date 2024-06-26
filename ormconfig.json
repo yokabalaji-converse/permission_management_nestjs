@@ -1,0 +1,14 @@
+  {
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "root",
+    "database": "permissionmanagement",
+    "entities": ["dist/src/**/*.entity.js"],
+    "migrations": ["dist/src/migrations/*.js"],
+    "cli": {
+      "migrationsDir": "src/migrations"
+    }
+  }
+  
