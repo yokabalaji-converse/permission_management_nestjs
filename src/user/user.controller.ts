@@ -10,6 +10,8 @@ import {
 import { UserService } from './user.service';
 import { CreateUserDto } from '../dtos/create-user-dto';
 import { UpdateUserDto } from '../dtos/update-user-dto';
+import { LoginDto } from 'src/dtos/login-dto';
+import { Public } from 'src/decorators/public-token-decorator';
 
 @Controller('users')
 export class UserController {
@@ -19,7 +21,12 @@ export class UserController {
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
-
+  @Public()
+  @Post('login')
+  async login(@Body() loginDto: LoginDto) {
+    return this.userService.login(loginDto);
+  }
+  @Public()
   @Get()
   findAll() {
     return this.userService.findAll();

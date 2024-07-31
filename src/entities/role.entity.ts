@@ -4,10 +4,12 @@ import {
   Column,
   ManyToMany,
   JoinTable,
+  OneToMany,
 } from 'typeorm';
-import { Permission } from './permission.entity';
+//import { Permission } from './permission.entity';
 import { User } from './user.entity';
-import { Team } from './team.entity';
+import { RoleModuleScreen } from './roleModuleScreen.entity';
+//import { Team } from './team.entity';
 
 @Entity()
 export class Role {
@@ -17,24 +19,38 @@ export class Role {
   @Column()
   name: string;
 
-  @Column()
-  createdAt: Date;
+  @Column({ nullable: true, default: null })
+  createdAt?: Date;
 
-  @Column()
-  updatedAt: Date;
+  @Column({ nullable: true, default: null })
+  updatedAt?: Date;
 
-  @Column()
-  deletedAt: Date;
+  @Column({ nullable: true, default: null })
+  deletedAt?: Date;
 
-  @ManyToMany(() => Permission)
-  @JoinTable()
-  permissions: Permission[];
+  // @ManyToMany(() => Permission)
+  // @JoinTable()
+  // permissions: Permission[];
+  // @ManyToMany(() => Permission, (permission) => permission.roles, {
+  //   cascade: true,
+  // })
+  // @JoinTable()
+  // permissions: Permission[];
+
+  // @ManyToMany(() => Permission, (permission) => permission.roles)
+  // permissions: Permission[];
+
+  @OneToMany(
+    () => RoleModuleScreen,
+    (roleModuleScreen) => roleModuleScreen.role,
+  )
+  roleModuleScreens: RoleModuleScreen[];
 
   @ManyToMany(() => User, (user) => user.roles)
   @JoinTable()
   users: User[];
 
-  @ManyToMany(() => Team, (team) => team.roles)
-  @JoinTable()
-  teams: User[];
+  // @ManyToMany(() => Team, (team) => team.roles)
+  // @JoinTable()
+  // teams: User[];
 }

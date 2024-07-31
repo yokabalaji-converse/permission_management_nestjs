@@ -29,6 +29,9 @@ export class User {
   phoneNumber: number;
 
   @Column({ nullable: true, default: null })
+  rToken: string;
+
+  @Column({ nullable: true, default: null })
   createdAt?: Date;
 
   @Column({ nullable: true, default: null })
